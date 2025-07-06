@@ -81,3 +81,45 @@ Mais contrairement à celle-ci elle peut prendre en argument un objet de plusieu
 Cette méthode est extrêmement simple : elle ajoute un header au lieu de définir les headers comme ``set()``. 
 
 Il faut donc obligatoirement utiliser cette méthode après ``res.set()`` sinon vous allez écraser les headers définis avec ``append()``.
+
+# 2 - Utilisation de Talend API Tester et les middleware json et urlencoded
+
+body-parser est un middleware permettant de parser le body d'une requête, par exemple POST, pour ne pas à avoir à faire soi même
+
+## Le parser ``json()``
+
+Sur l'objet express vous avez à disposition un middleware permettant d'utiliser le parser json de body-parser.
+
+Le middleware va parser le body de la requête et le mettre sur l'objet req et plus précisément sur req.body le rendant extrêmement facile d'accès pour vos opérations.
+
+En l'utilisant avec app.use() nous parsons tous les body de toutes les requêtes.
+
+Par défaut, le parser s'exécutera dès lors que le header Content-Type a pour valeur application/json. 
+
+## Le parser ``urlencoded()``
+
+e même, vous avez également accès à un autre parser sur l'objet express permettant d'utiliser le parser urlencoded de body-parser.
+
+Ce parser est utilisé pour le format x-www-form-urlencoded.
+
+Dans ce format, le body est de la forme var1=val1&var2=val2
+
+```javascript
+const express = require('express');
+const app = express();
+
+const jsonParser = express.json();
+const urlencodedParser = express.urlencoded({ extended: false });
+
+app.post('/login', jsonParser, (req, res) => {
+  res.send('Coucou ' + req.body.prenom);
+})
+
+app.post('/api/users', urlencodedParser, (req, res) => {
+  res.send('Coucou ' + req.body.prenom);
+})
+```
+
+# Le middleware Morgan
+
+Morgan est un logger pour les requêtes Http qui est maintenu par l'équipe d'Express. 
