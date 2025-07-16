@@ -233,3 +233,9 @@ app.route('/book')
     res.send('Suppression du livre')
   })
   ```
+
+# X - Session et authentification
+
+## Cookies & sessions
+
+## Authentification avec Passport
