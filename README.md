@@ -239,3 +239,7 @@ app.route('/book')
 ## Cookies & sessions
 
 ## Authentification avec Passport
+
+## Oauth2
+
+# X - Manipulation de fichier et librairy Multer
