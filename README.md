@@ -243,3 +243,11 @@ app.route('/book')
 ## Oauth2
 
 # X - Manipulation de fichier et librairy Multer
+
+Elle sert spécifiquement à gérer le format multipart/form-data avec Express.
+
+Comme les autres midlleware servant à parser les body des requêtes (par exemple body-parser), multer va également parser les body des messages multipart et placer le résultat sur l'objet Request. 
+
+L'objet req.body contiendra les valeurs des champs de type text du formulaire.
+
+L'objet req.file ou req.files contiendra les fichiers téléchargés en utilisant le formulaire.
